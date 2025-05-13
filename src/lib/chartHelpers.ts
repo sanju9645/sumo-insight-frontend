@@ -1,4 +1,4 @@
-import { ChartTransformedData, ApiLog,LineChartComponentProps, ChartData } from "../types";
+import { ChartTransformedData, ApiLog, ChartData } from "../types";
 
 export const chartTransformApiLogs = (apiLogs: ApiLog[], selectedApis: string[]) => {
   const countDataMap: Record<string, ChartTransformedData> = {};

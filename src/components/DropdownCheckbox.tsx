@@ -1,5 +1,4 @@
 import * as React from "react";
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -16,8 +15,6 @@ interface DropdownMenuCheckboxesProps {
   selectedApis: string[];
   setSelectedApis: React.Dispatch<React.SetStateAction<string[]>>;
 }
-
-type Checked = DropdownMenuCheckboxItemProps["checked"];
 
 export function DropdownMenuCheckboxes({
   apiEndpoints,
