@@ -39,7 +39,6 @@ const manifestForPlugIn = {
     display: "standalone" as const,
     scope: '/',
     start_url: "/",
-    orientation: 'portrait' as const
   }
 }
 
