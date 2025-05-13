@@ -80,3 +80,63 @@ VITE_AUTH0_AUDIENCE=sumo-insight
 > ```
 
 > ✅ Confirm the server is up by visiting: [http://localhost:3000/health](http://localhost:3000/health)
+
+
+Here's your **Deployment** guide formatted for inclusion in a `README.md` file using proper Markdown:
+
+---
+
+## 🚀 Deployment (Frontend on Render)
+
+### 1. Go to [Render](https://render.com)
+
+### 2. Select **Static Site**
+
+### 3. Connect Source Code
+
+Connect your GitHub repository to Render.
+
+### 4. Fill in the deployment fields:
+
+| Field             | Value                   |
+| ----------------- | ----------------------- |
+| **Name**          | `sumo-insight-frontend` |
+| **Project**       | `Sumo Insight`          |
+| **Build Command** | `npm run build`         |
+| **Branch**        | `production`            |
+| **Publish Dir**   | `./dist`                |
+
+---
+
+### 5. Add Environment Variables
+
+| Variable Name             | Value                                                                |
+| ------------------------- | -------------------------------------------------------------------- |
+| `VITE_API_BASE_URL`       | `https://sumo-insight-backend.onrender.com` *(Render backend URL)*   |
+| `VITE_AUTH0_CALLBACK_URL` | `https://sumo-insight-frontend.onrender.com` *(Render frontend URL)* |
+
+> ⚠️ **Note:** Do **not** use `localhost` for these values in production.
+
+---
+
+### 6. Configure Auth0 Settings
+
+Before deploying, update your Auth0 application's settings:
+
+#### Allowed Callback URLs:
+
+```
+http://localhost:5173,https://sumo-insight-frontend.onrender.com
+```
+
+#### Allowed Logout URLs:
+
+```
+http://localhost:5173,https://sumo-insight-frontend.onrender.com
+```
+
+#### Allowed Web Origins:
+
+```
+http://localhost:5173,https://sumo-insight-frontend.onrender.com
+```
