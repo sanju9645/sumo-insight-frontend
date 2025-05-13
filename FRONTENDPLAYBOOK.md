@@ -140,3 +140,26 @@ http://localhost:5173,https://sumo-insight-frontend.onrender.com
 ```
 http://localhost:5173,https://sumo-insight-frontend.onrender.com
 ```
+
+
+
+## 🚀 Converting to PWA
+
+To convert this Vite + React app into a Progressive Web App (PWA), follow the steps below:
+
+### 1. Install the PWA Plugin
+
+```bash
+npm install vite-plugin-pwa --save-dev
+```
+
+### 2. Follow
+```bash
+https://www.saurabhmisra.dev/setup-react-pwa-using-vite/
+```
+
+### 2. Run
+```bash
+npm run build
+npm run preview
+```
