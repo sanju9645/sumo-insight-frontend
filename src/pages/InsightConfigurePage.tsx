@@ -22,7 +22,7 @@ const InsightConfigurePage = () => {
   const { theme } = useTheme();
   const colors = siteContents.colors;
   const bgColor2 = theme === "dark" ? colors.bgLight2 : colors.bgDark2;
-  const { configureInsight, isLoading } = insightConfigure();
+  const { configureInsight, isLoading: isConfigureLoading } = insightConfigure();
   const { 
     notesDescription, 
     setNotesDescription, 
@@ -35,7 +35,7 @@ const InsightConfigurePage = () => {
   const [selectedApiColors, setSelectedApiColors] = useState<Record<string, string>>({});
   const [endpointArray, setEndpointArray] = useState<string[]>([]);
   const navigate = useNavigate();
-  const { apiEndpointsData, isLoading: isGetApiEndpointsLoading, error: getApiEndpointsError } = useGetApiEndpoints();
+  const { apiEndpointsData, error: getApiEndpointsError } = useGetApiEndpoints();
   
   useEffect(() => {
     if (getApiEndpointsError) {
@@ -117,7 +117,7 @@ const InsightConfigurePage = () => {
           <Button
             type="submit"
             className={`flex items-center px-3 font-bold hover:${bgColor2}`}
-            disabled={isLoading}
+            disabled={isConfigureLoading}
             onClick={(e) => {
               e.preventDefault();
               handleButtonClick(false);
@@ -129,7 +129,7 @@ const InsightConfigurePage = () => {
           <Button
             type="button"
             className={`flex items-center px-3 font-bold hover:${bgColor2}`}
-            disabled={isLoading}
+            disabled={isConfigureLoading}
             onClick={() => handleButtonClick(true)}
           >
             <span>{siteContents.buttons.btnLabel6}</span>

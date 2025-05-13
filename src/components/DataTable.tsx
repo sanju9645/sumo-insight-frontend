@@ -14,7 +14,7 @@ import {
   Row,
   Cell
 } from "@tanstack/react-table";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "./ui/table";
 import { Input } from "./ui/input";
 import { ColoredTableCell } from "./ColoredTableCell"; // Import the new component
 
@@ -110,7 +110,7 @@ export function DataTable<TData extends Record<string, any>>({ data, header, isC
           <TableBody>
             {table.getRowModel().rows.map((row: Row<TData>) => (
               <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell: Cell<TData, unknown>, cellIndex: number) => {
+                {row.getVisibleCells().map((cell: Cell<TData, unknown>) => {
                   const colKey = cell.column.id;
                   const currentValue = cell.getValue() as string | number;
 

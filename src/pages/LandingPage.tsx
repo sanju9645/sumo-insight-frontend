@@ -16,7 +16,7 @@ const LandingPage = () => {
   const [selectedEndDate, setSelectedEndDate] = useState<Date>(new Date());
   const [fetchDates, setFetchDates] = useState({ start: new Date(), end: new Date() });
   const { apiLogs, isLoading: isGetLoading } = useGetSumoLogs(fetchDates.start, fetchDates.end);
-  const { headers, sortedDates, sortedEndpoints, transformedData } = dataTableTransformApiLogs(apiLogs);
+  const { headers, sortedEndpoints, transformedData } = dataTableTransformApiLogs(apiLogs);
   const [selectedApis, setSelectedApis] = useState<string[]>([]);
   const { countData, countAvgPTime } = chartTransformApiLogs(apiLogs, selectedApis);
   const [isColoredTableCellFeatureEnabled, setisColoredTableCellFeatureEnabled] = useState(false);
