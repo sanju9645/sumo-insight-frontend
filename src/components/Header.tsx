@@ -13,7 +13,7 @@ const Header = () => {
   const textColor = theme === "dark" ? colors.textLight1 : colors.textDark1;
 
   return (
-    <div className={`fixed top-0 left-0 right-0 border-b-2 py-6 px-3 bg-white text-black dark:bg-gray-800 dark:text-white dark:border-gray-600 shadow-md z-50`}>
+    <div className={`fixed top-0 left-0 right-0 border-b-2 py-6 px-3 bg-white text-black dark:bg-gray-950 dark:text-white dark:border-gray-600 shadow-md z-50`}>
       <div className="container mx-auto flex justify-between items-center">
         <Link to={siteContents.pages.apiInsight} className={`flex items-center space-x-2 gap-x-2 text-3xl font-bold tracking-tight ${textColor}`}>
           <Logo />
