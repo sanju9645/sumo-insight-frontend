@@ -57,3 +57,33 @@ http://localhost:5173,https://sumo-insight-frontend.onrender.com
 ```
 http://localhost:5173,https://sumo-insight-frontend.onrender.com
 ```
+
+
+---
+
+## 🔐 Environment Configuration
+
+Create a `.env` file in the root of your project and add the following:
+
+<details>
+<summary>📄 <code>.env</code> Example</summary>
+
+```env
+VITE_API_BASE_URL=http://localhost:3000
+
+VITE_AUTH0_DOMAIN=<vite_auth0_domain>
+VITE_AUTH0_CLIENT_ID=<vite_auth0_client_id>
+VITE_AUTH0_CALLBACK_URL=http://localhost:5173
+VITE_AUTH0_AUDIENCE=sumo-insight
+```
+
+</details>
+
+
+## 🖥️ Run Image Anywhere
+
+```bash
+docker pull your-dockerhub-username/sumo-insight-frontend:latest
+
+docker run -it --rm -p 5173:5173 --env-file .env sanju9645/sumo-insight-frontend:latest
+```
