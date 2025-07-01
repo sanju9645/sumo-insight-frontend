@@ -95,8 +95,9 @@ A dedicated page to customize the system:
 
   ![Email](./public/email.png)
 
-  ![Call](./public/call.png)
-
+<p align="center">
+  <img src="./public/call.png" alt="Call" width="300"/>
+</p>
 ---
 
 ### ✅ Benefits
