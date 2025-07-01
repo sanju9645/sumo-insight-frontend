@@ -1,6 +1,14 @@
 # sumo-insight-frontend
 Turning raw API data into actionable intelligence. Visualizing intelligence — clean UI to explore and interact with API-driven insights.
+---
 
+## 📊 Sumo Insight – API Performance Monitoring Tool
+
+**Sumo Insight** is a web application developed for personal use to monitor and analyze the API performance of a high-traffic application I am currently working on.
+
+In addition to traditional metrics tracking, **Sumo Insight** can also be integrated with AI platforms like **OpenAI**, **DeepSeek**, or **Hugging Face**. This allows you to perform intelligent API behavior analysis, where **AI** can interpret log patterns and trigger email/call alerts automatically based on its assessment.
+
+---
 ### 🔗 Live Demo
 
 You can view a live demo of the application by visiting the link below.
@@ -11,15 +19,7 @@ To explore sample data, select the date range **April 1, 2025 – April 30, 2025
 🖥️ **[Frontend Repository](https://github.com/sanju9645/sumo-insight)**
 
 🛠️ **[Backend Repository](https://github.com/sanju9645/sumo-insight-backend)**
-
 ---
-
-## 📊 Sumo Insight – API Performance Monitoring Tool
-
-**Sumo Insight** is a web application developed for **personal use** to monitor and analyze the **API performance** of a high-traffic application I am currently working on.
-
----
-
 ### 🧭 Purpose
 
 The application I support experiences **heavy user traffic**, resulting in a **large number of API calls each day**. If any API takes too long to respond, it can cause **connection failures**, negatively impacting both **user experience** and **company revenue**.
