@@ -1,149 +1,110 @@
 # sumo-insight-frontend
 Turning raw API data into actionable intelligence. Visualizing intelligence — clean UI to explore and interact with API-driven insights.
+---
 
-## 🔐 Authentication
+## 📊 Sumo Insight – API Performance Monitoring Tool
 
-This project uses **Auth0** for user authentication
+**Sumo Insight** is a web application developed for personal use to monitor and analyze the API performance of a high-traffic application I am currently working on.
 
+In addition to traditional metrics tracking, **Sumo Insight** can also be integrated with AI platforms like **OpenAI**, **DeepSeek**, or **Hugging Face**. This allows you to perform intelligent API behavior analysis, where **AI** can interpret log patterns and trigger email/call alerts automatically based on its assessment.
 
-### 🔑 Setting Up Auth0
+---
+### 🔗 Live Demo
 
-To enable secure login functionality using Auth0, follow these steps:
+You can view a live demo of the application by visiting the link below.
+To explore sample data, select the date range **April 1, 2025 – April 30, 2025** in the dashboard.
 
-1. **Create an Auth0 Account**
+🌐 **[View Demo](https://sumo-insight-frontend.onrender.com/)**
 
-   * Go to [https://auth0.com](https://auth0.com) and sign up or log in.
+🖥️ **[Frontend Repository](https://github.com/sanju9645/sumo-insight)**
 
-2. **Create an Auth0 Application**
+🛠️ **[Backend Repository](https://github.com/sanju9645/sumo-insight-backend)**
+---
+### 🧭 Purpose
 
-   * Navigate to the **Applications → Applications** section in the Auth0 dashboard.
-   * Click **Create Application**.
-   * Choose a name (e.g., `sumo-insight-client`) and select the **Single Page Web Applications** type.
-   * Click **Create**.
+The application I support experiences **heavy user traffic**, resulting in a **large number of API calls each day**. If any API takes too long to respond, it can cause **connection failures**, negatively impacting both **user experience** and **company revenue**.
 
-3. **Configure Allowed URLs**
-
-   * Under the application settings:
-
-     * **Allowed Callback URLs**:
-       `http://localhost:5173`
-     * **Allowed Logout URLs**:
-       `http://localhost:5173`
-     * **Allowed Web Origins**:
-       `http://localhost:5173`
-
-4. **Create an API in Auth0**
-
-   * Navigate to **Applications → APIs**.
-   * Click **Create API**.
-   * Choose a name like `sumo-insight-api`.
-   * Set an identifier, e.g., `sumo-insight`.
-   * Leave signing algorithm as **RS256** and click **Create**.
-
-### ⚙️ Required Environment Variables
-
-In your `.env` file (placed in the root of your Docker setup), set the following:
-
-#### For Frontend (Vite)
-
-```env
-VITE_API_BASE_URL=http://localhost:3000
-
-VITE_AUTH0_DOMAIN=<your-auth0-domain>
-VITE_AUTH0_CLIENT_ID=<your-auth0-client-id>
-VITE_AUTH0_CALLBACK_URL=http://localhost:5173
-VITE_AUTH0_AUDIENCE=sumo-insight
-```
-
-* **VITE\_AUTH0\_DOMAIN**: Found in your Auth0 tenant settings (e.g., `dev-xxxxx.us.auth0.com`).
-* **VITE\_AUTH0\_CLIENT\_ID**: Found in the Application Settings.
-* **VITE\_AUTH0\_CALLBACK\_URL**: Must match the value configured in Auth0 → Application.
-* **VITE\_AUTH0\_AUDIENCE**: Should be the API identifier (e.g., `sumo-insight`).
-
-
-
-
-## 🚀 Deployment (Frontend on Render)
-
-### 1. Go to [Render](https://render.com)
-
-### 2. Select **Static Site**
-
-### 3. Connect Source Code
-
-Connect your GitHub repository to Render.
-
-### 4. Fill in the deployment fields:
-
-| Field             | Value                   |
-| ----------------- | ----------------------- |
-| **Name**          | `sumo-insight-frontend` |
-| **Project**       | `Sumo Insight`          |
-| **Build Command** | `npm run build`         |
-| **Branch**        | `production`            |
-| **Publish Dir**   | `./dist`                |
+To prevent such issues and proactively address performance bottlenecks, this tool helps **track and analyze API metrics** over time.
 
 ---
 
-### 5. Add Environment Variables
+### 🔌 Integration with Sumo Logic
 
-| Variable Name             | Value                                                                |
-| ------------------------- | -------------------------------------------------------------------- |
-| `VITE_API_BASE_URL`       | `https://sumo-insight-backend.onrender.com` *(Render backend URL)*   |
-| `VITE_AUTH0_CALLBACK_URL` | `https://sumo-insight-frontend.onrender.com` *(Render frontend URL)* |
+* The production application is integrated with [Sumo Logic](https://www.sumologic.com/), which collects and stores **API logs**.
+* However, **Sumo Logic retains logs for only 1 month**, which limits historical analysis.
+* **Sumo Insight** bridges this gap by:
 
-> ⚠️ **Note:** Do **not** use `localhost` for these values in production.
+  * Fetching summarized API data daily (e.g., call count, average processing time).
+  * Storing it in a local database for **long-term analysis**.
 
----
-
-### 6. Configure Auth0 Settings
-
-Before deploying, update your Auth0 application's settings:
-
-#### Allowed Callback URLs:
-
-```
-http://localhost:5173,https://sumo-insight-frontend.onrender.com
-```
-
-#### Allowed Logout URLs:
-
-```
-http://localhost:5173,https://sumo-insight-frontend.onrender.com
-```
-
-#### Allowed Web Origins:
-
-```
-http://localhost:5173,https://sumo-insight-frontend.onrender.com
-```
-
-
----
-
-## 🔐 Environment Configuration
-
-Create a `.env` file in the root of your project and add the following:
-
-<details>
-<summary>📄 <code>.env</code> Example</summary>
-
-```env
-VITE_API_BASE_URL=http://localhost:3000
-
-VITE_AUTH0_DOMAIN=<vite_auth0_domain>
-VITE_AUTH0_CLIENT_ID=<vite_auth0_client_id>
-VITE_AUTH0_CALLBACK_URL=http://localhost:5173
-VITE_AUTH0_AUDIENCE=sumo-insight
-```
-
-</details>
-
-
-## 🖥️ Run Image Anywhere
+#### ⏱️ Example Cron Job:
 
 ```bash
-docker pull your-dockerhub-username/sumo-insight-frontend:latest
-
-docker run -it --rm -p 5173:5173 --env-file .env sanju9645/sumo-insight-frontend:latest
+0 0 * * * /path/to/node /path/to/project/node_modules/.bin/ts-node /path/to/sumologic-log-processor.ts
 ```
+
+This cron job runs daily and:
+
+* Executes a custom Sumo Logic query.
+* Fetches relevant API performance data.
+* Saves it to a local database for dashboard display and trend analysis.
+
+---
+
+### 📈 Key Features
+
+#### 🗓️ Historical Filtering
+
+* Select a **custom time range** to view past API performance data and identify anomalies.
+  ![Home](./public/home.gif)
+
+#### 🔍 API Performance Dashboard
+
+* Visualize API behavior using **tables** or **graphs**.
+  ![Table](./public/table_chart.gif)
+* Each API’s performance is **color-coded** to highlight trends:
+
+  * Green = improved
+  * Yellow = consistent
+  * Red = degraded
+
+  ![Cell Color](./public/cell_color.gif)
+
+#### ⚙️ Configuration Panel
+
+A dedicated page to customize the system:
+
+* ✏️ **Dashboard Notes**: Add contextual notes that appear on the dashboard.
+* 🧾 **Editable Sumo Logic Query**: Modify the query used to fetch data.
+* 🎨 **Custom API Colors**: Assign fixed colors to specific APIs for easier identification.
+
+  ![Config](./public/config.gif)
+  
+#### 🚨 Alerting System
+
+* Set thresholds for:
+
+  * API call count
+  * Average processing time
+* If thresholds are exceeded:
+
+  * 📧 Send an **alert email** to configured email addresses.
+  * 📞 Trigger an **automated phone call** that reads out the affected API and its metrics.
+
+  ![Alert Config](./public/alert_config.gif)
+
+  ![Email](./public/email.png)
+
+<p align="center">
+  <img src="./public/call.png" alt="Call" width="300"/>
+</p>
+---
+
+### ✅ Benefits
+
+* Provides **real-time insight** into API behavior.
+* Enables **long-term tracking** beyond Sumo Logic’s default 1-month retention.
+* Helps identify **performance degradation early**.
+* Improves ability to take **data-driven action** before user impact.
+
+---
