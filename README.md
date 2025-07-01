@@ -83,9 +83,9 @@ A dedicated page to customize the system:
 
   ![Alert Config](./public/alert_config.gif)
 
-  ![Email](./public/email.gif)
+  ![Email](./public/email.png)
 
-  ![Call](./public/call.gif)
+  ![Call](./public/call.png)
 
 ---
 
