@@ -69,6 +69,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
     <div className="border rounded-md">
       <div className="border-b p-2 flex flex-wrap gap-1">
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleBold().run()}
@@ -77,6 +78,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <Bold className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -85,6 +87,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <Italic className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -93,6 +96,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <Strikethrough className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -101,6 +105,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <List className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -109,6 +114,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <ListOrdered className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
@@ -117,6 +123,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignLeft className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('center').run()}
@@ -125,6 +132,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignCenter className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('right').run()}
@@ -133,6 +141,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignRight className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('justify').run()}
@@ -141,6 +150,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignJustify className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={addLink}
@@ -149,6 +159,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <LinkIcon className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={setColor}
