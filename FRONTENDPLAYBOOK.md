@@ -55,6 +55,46 @@ npx shadcn@latest add calendar
 
 ---
 
+## 🔐 Authentication
+
+This project uses **Auth0** for user authentication
+
+
+### 🔑 Setting Up Auth0
+
+To enable secure login functionality using Auth0, follow these steps:
+
+1. **Create an Auth0 Account**
+
+   * Go to [https://auth0.com](https://auth0.com) and sign up or log in.
+
+2. **Create an Auth0 Application**
+
+   * Navigate to the **Applications → Applications** section in the Auth0 dashboard.
+   * Click **Create Application**.
+   * Choose a name (e.g., `sumo-insight-client`) and select the **Single Page Web Applications** type.
+   * Click **Create**.
+
+3. **Configure Allowed URLs**
+
+   * Under the application settings:
+
+     * **Allowed Callback URLs**:
+       `http://localhost:5173`
+     * **Allowed Logout URLs**:
+       `http://localhost:5173`
+     * **Allowed Web Origins**:
+       `http://localhost:5173`
+
+4. **Create an API in Auth0**
+
+   * Navigate to **Applications → APIs**.
+   * Click **Create API**.
+   * Choose a name like `sumo-insight-api`.
+   * Set an identifier, e.g., `sumo-insight`.
+   * Leave signing algorithm as **RS256** and click **Create**.
+
+
 ## 🔐 Environment Configuration
 
 Create a `.env` file in the root of your project and add the following:
