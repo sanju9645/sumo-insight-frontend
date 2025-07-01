@@ -29,9 +29,12 @@ const Auth0ProviderWithNavigate = ({ children }: Props) => {
       clientId={clientId}
       authorizationParams={{
         redirect_uri: redirectUri,
-        audience
+        audience,
+        scope: "openid profile email"
       }}
       onRedirectCallback={onRedirectCallback}
+      cacheLocation="localstorage"
+      useRefreshTokens={false}
     >
       {children}
     </Auth0Provider>

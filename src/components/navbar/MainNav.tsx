@@ -9,10 +9,9 @@ const MainNav = () => {
 
   return (
     <span className="flex space-x-2 items-center">
-      <ConfigureButton />
-
       {isAuthenticated ? (
         <>
+          <ConfigureButton />
           <UsernameMenu />
         </>
       ) : (

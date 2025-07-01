@@ -58,6 +58,7 @@ const InsightConfigurePage = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, redirect: boolean) => {
     e.preventDefault();
     const success = await configureInsight(notesDescription, sumologicQuery, selectedApiColors, alertConfig || undefined);
+    
     if (success && redirect) {
       navigate(siteContents.pages.apiInsight);
     }
@@ -65,12 +66,13 @@ const InsightConfigurePage = () => {
 
   const handleButtonClick = async (redirect: boolean) => {
     const success = await configureInsight(notesDescription, sumologicQuery, selectedApiColors, alertConfig || undefined);
+    
     if (success && redirect) {
       navigate(siteContents.pages.apiInsight);
     }
   };
 
-  const handleAlertConfigChange = (config: AlertConfiguration) => {
+  const handleAlertConfigChange = (config: AlertConfiguration) => {    
     if (JSON.stringify(config) !== JSON.stringify(alertConfig)) {
       setAlertConfig(config);
     }

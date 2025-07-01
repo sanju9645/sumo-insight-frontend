@@ -62,11 +62,12 @@ const AlertConfigurationSection = ({
     if (alertConditions.length === 0) {
       setIsValid(true);
       if (onConfigChange) {
-        onConfigChange({
+        const config = {
           emails: alertEmails,
           phoneNumbers: phoneNumbers,
           conditions: validConditions.map(condition => ({...condition}))
-        }, true);
+        };
+        onConfigChange(config, true);
       }
       return;
     }
@@ -79,11 +80,12 @@ const AlertConfigurationSection = ({
     if (hasEmptyFields) {
       setIsValid(false);
       if (onConfigChange) {
-        onConfigChange({
+        const config = {
           emails: alertEmails,
           phoneNumbers: phoneNumbers,
           conditions: validConditions.map(condition => ({...condition}))
-        }, false);
+        };
+        onConfigChange(config, false);
       }
       return;
     }
@@ -94,11 +96,12 @@ const AlertConfigurationSection = ({
       toast.error("Duplicate alert conditions found. Please ensure all conditions are unique.");
       setIsValid(false);
       if (onConfigChange) {
-        onConfigChange({
+        const config = {
           emails: alertEmails,
           phoneNumbers: phoneNumbers,
           conditions: validConditions.map(condition => ({...condition}))
-        }, false);
+        };
+        onConfigChange(config, false);
       }
       return;
     }
@@ -106,11 +109,12 @@ const AlertConfigurationSection = ({
     // If we got here, the configuration is valid
     setIsValid(true);
     if (onConfigChange) {
-      onConfigChange({
+      const config = {
         emails: alertEmails,
         phoneNumbers: phoneNumbers,
         conditions: validConditions.map(condition => ({...condition}))
-      }, true);
+      };
+      onConfigChange(config, true);
     }
   };
 
@@ -256,6 +260,16 @@ const AlertConfigurationSection = ({
             placeholder="Enter email and press Enter"
             className="flex-grow outline-none bg-transparent"
           />
+          <button
+            type="button"
+            onClick={() => {
+              addEmail(emailInput);
+              setEmailInput('');
+            }}
+            className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+          >
+            Add
+          </button>
         </div>
         <p className="text-xs text-gray-500 mt-1">Type a single email address and press Enter to add it to the list.</p>
       </div>
@@ -284,6 +298,16 @@ const AlertConfigurationSection = ({
             placeholder="Enter phone number and press Enter"
             className="flex-grow outline-none bg-transparent"
           />
+          <button
+            type="button"
+            onClick={() => {
+              addPhone(phoneInput);
+              setPhoneInput('');
+            }}
+            className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+          >
+            Add
+          </button>
         </div>
         <p className="text-xs text-gray-500 mt-1">Type a single phone number with country code (e.g., +1234567890) and press Enter to add it to the list.</p>
       </div>
