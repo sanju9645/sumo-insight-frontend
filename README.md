@@ -1,6 +1,16 @@
 # sumo-insight-frontend
 Turning raw API data into actionable intelligence. Visualizing intelligence — clean UI to explore and interact with API-driven insights.
 
+### 🔗 Live Demo
+
+You can view a live demo of the application by visiting the link below.
+To explore sample data, select the date range **April 1, 2025 – April 30, 2025** in the dashboard.
+
+🌐 **[View Demo](https://sumo-insight-frontend.onrender.com/)**
+
+🖥️ **[Frontend Repository](https://github.com/sanju9645/sumo-insight)**
+
+🛠️ **[Backend Repository](https://github.com/sanju9645/sumo-insight-backend)**
 
 ---
 
