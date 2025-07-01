@@ -6,13 +6,15 @@ import { useTheme } from "../theme/ThemeProvider";
 import ConfigureButton from "../ConfigureButton";
 
 const MobileNavLinks = () => {
-  const { logout } = useAuth0();
+  const { logout, isAuthenticated } = useAuth0();
   const { theme } = useTheme();
   const colors = siteContents.colors;
   const bgColor2 = theme === "dark" ? colors.bgLight2 : colors.bgDark2;
 
   return (
     <>
+      {isAuthenticated && <ConfigureButton />}
+      
       <Button
         onClick={() => logout({
           logoutParams: {
@@ -23,8 +25,6 @@ const MobileNavLinks = () => {
       >
         <LogOut /> {siteContents.buttons.btnLabel2}
       </Button>
-
-      <ConfigureButton />
     </>
   );
 };
