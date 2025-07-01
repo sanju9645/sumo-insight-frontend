@@ -9,7 +9,6 @@ import { Button } from './ui/button'
 import { 
   Bold, 
   Italic, 
-  Underline, 
   Strikethrough, 
   List, 
   ListOrdered, 
