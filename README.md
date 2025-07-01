@@ -43,18 +43,22 @@ This cron job runs daily and:
 
 ### 📈 Key Features
 
+#### 🗓️ Historical Filtering
+
+* Select a **custom time range** to view past API performance data and identify anomalies.
+  ![Home](./public/home.gif)
+
 #### 🔍 API Performance Dashboard
 
 * Visualize API behavior using **tables** or **graphs**.
+  ![Table](./public/table_chart.gif)
 * Each API’s performance is **color-coded** to highlight trends:
 
   * Green = improved
   * Yellow = consistent
   * Red = degraded
 
-#### 🗓️ Historical Filtering
-
-* Select a **custom time range** to view past API performance data and identify anomalies.
+  ![Cell Color](./public/cell_color.gif)
 
 #### ⚙️ Configuration Panel
 
@@ -64,6 +68,8 @@ A dedicated page to customize the system:
 * 🧾 **Editable Sumo Logic Query**: Modify the query used to fetch data.
 * 🎨 **Custom API Colors**: Assign fixed colors to specific APIs for easier identification.
 
+  ![Config](./public/config.gif)
+  
 #### 🚨 Alerting System
 
 * Set thresholds for:
@@ -74,6 +80,12 @@ A dedicated page to customize the system:
 
   * 📧 Send an **alert email** to configured email addresses.
   * 📞 Trigger an **automated phone call** that reads out the affected API and its metrics.
+
+  ![Alert Config](./public/alert_config.gif)
+
+  ![Email](./public/email.gif)
+
+  ![Call](./public/call.gif)
 
 ---
 
