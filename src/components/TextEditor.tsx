@@ -19,6 +19,7 @@ import {
   Link as LinkIcon,
   Palette
 } from 'lucide-react'
+import { useState } from 'react'
 
 interface TextEditorProps {
   value: string;
@@ -26,6 +27,9 @@ interface TextEditorProps {
 }
 
 const TextEditor = ({ value, onChange }: TextEditorProps) => {
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [selectedColor, setSelectedColor] = useState('#000000');
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -58,17 +62,20 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
     }
   };
 
-  const setColor = () => {
-    const color = window.prompt('Enter color (e.g., #ff0000)');
-    if (color) {
-      editor.chain().focus().setColor(color).run();
-    }
+  const applyColor = (color: string) => {
+    editor.chain().focus().setColor(color).run();
+    setShowColorPicker(false);
+  };
+
+  const toggleColorPicker = () => {
+    setShowColorPicker(!showColorPicker);
   };
 
   return (
     <div className="border rounded-md">
       <div className="border-b p-2 flex flex-wrap gap-1">
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleBold().run()}
@@ -77,6 +84,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <Bold className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -85,6 +93,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <Italic className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -93,6 +102,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <Strikethrough className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -101,6 +111,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <List className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -109,6 +120,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <ListOrdered className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
@@ -117,6 +129,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignLeft className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('center').run()}
@@ -125,6 +138,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignCenter className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('right').run()}
@@ -133,6 +147,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignRight className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('justify').run()}
@@ -141,6 +156,7 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <AlignJustify className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={addLink}
@@ -149,13 +165,54 @@ const TextEditor = ({ value, onChange }: TextEditorProps) => {
           <LinkIcon className="h-4 w-4" />
         </Button>
         <Button
+          type="button"
           variant="ghost"
           size="sm"
-          onClick={setColor}
+          onClick={toggleColorPicker}
         >
           <Palette className="h-4 w-4" />
         </Button>
       </div>
+      
+      {/* Color Picker Dropdown */}
+      {showColorPicker && (
+        <div className="border-b p-2 bg-gray-50 dark:bg-gray-800">
+          <div className="flex flex-wrap gap-2 items-center">
+            <span className="text-sm font-medium mr-2">Text Color:</span>
+            
+            {/* Predefined Colors */}
+            {['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#800080', '#008000', '#ffc0cb', '#a52a2a'].map((color) => (
+              <button
+                key={color}
+                type="button"
+                className="w-6 h-6 rounded border-2 border-gray-300 hover:border-gray-500 transition-colors"
+                style={{ backgroundColor: color }}
+                onClick={() => applyColor(color)}
+                title={color}
+              />
+            ))}
+            
+            {/* Custom Color Input */}
+            <div className="flex items-center gap-2 ml-2">
+              <input
+                type="color"
+                value={selectedColor}
+                onChange={(e) => setSelectedColor(e.target.value)}
+                className="w-8 h-8 border rounded cursor-pointer"
+              />
+              <Button
+                type="button"
+                size="sm"
+                onClick={() => applyColor(selectedColor)}
+                className="text-xs"
+              >
+                Apply
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <EditorContent 
         editor={editor} 
         className="p-3 min-h-[200px] prose prose-sm max-w-none dark:prose-invert"

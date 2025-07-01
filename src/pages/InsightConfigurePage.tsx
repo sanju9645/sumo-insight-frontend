@@ -55,15 +55,6 @@ const InsightConfigurePage = () => {
     setEndpointArray(endpointStrings);
   }, [apiEndpointsData]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, redirect: boolean) => {
-    e.preventDefault();
-    const success = await configureInsight(notesDescription, sumologicQuery, selectedApiColors, alertConfig || undefined);
-    
-    if (success && redirect) {
-      navigate(siteContents.pages.apiInsight);
-    }
-  };
-
   const handleButtonClick = async (redirect: boolean) => {
     const success = await configureInsight(notesDescription, sumologicQuery, selectedApiColors, alertConfig || undefined);
     
@@ -89,7 +80,7 @@ const InsightConfigurePage = () => {
         <h1 className="mt-5 text-2xl font-bold">Insight Configure Page</h1>
       </div>
 
-      <form onSubmit={(e) => handleSubmit(e, false)} className="mt-5">
+      <form className="mt-5">
         <h2 className="text-lg font-bold mt-5">Notes:</h2>
         <TextEditor value={notesDescription} onChange={setNotesDescription} />
 
@@ -117,13 +108,10 @@ const InsightConfigurePage = () => {
         
         <div className="flex justify-between mt-5">
           <Button
-            type="submit"
+            type="button"
             className={`flex items-center px-3 font-bold hover:${bgColor2}`}
             disabled={isConfigureLoading}
-            onClick={(e) => {
-              e.preventDefault();
-              handleButtonClick(false);
-            }}
+            onClick={() => handleButtonClick(false)}
           >
             <span>{siteContents.buttons.btnLabel5}</span>
           </Button>
