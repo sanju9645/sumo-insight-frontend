@@ -14,7 +14,7 @@ In addition to traditional metrics tracking, **Sumo Insight** can also be integr
 You can view a live demo of the application by visiting the link below.
 To explore sample data, select the date range **April 1, 2025 – April 30, 2025** in the dashboard.
 
-🌐 **[View Demo](https://sumo-insight-frontend.onrender.com/)**
+🌐 **[View Demo](https://sumo-insight.onrender.com)**
 
 🖥️ **[Frontend Repository](https://github.com/sanju9645/sumo-insight)**
 
